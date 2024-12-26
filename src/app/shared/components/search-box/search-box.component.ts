@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { debounceTime } from 'rxjs/internal/operators/debounceTime';
-import { Subject } from 'rxjs/internal/Subject';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { Subject, Subscription, debounceTime  } from 'rxjs';
 
 @Component({
   selector: 'shared-search-box',
@@ -18,6 +16,9 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   @Input()
   public placeholder: string = '';
 
+  @Input()
+  public initialValue: string = '';
+
   @Output()
   public onValue: EventEmitter<string> = new EventEmitter();
 
@@ -29,8 +30,9 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
     .pipe(
       debounceTime(300)
     )
-    .subscribe( value => {
-    })
+    .subscribe( value => { 
+      this.onDebounce.emit( value );
+    });
   }
 
   ngOnDestroy(): void {
