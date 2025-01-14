@@ -1,6 +1,6 @@
 # CountryApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
+Esta aplicación te permite poder obtener información sobre distintos paises, ciudades o continentes y conocer cuales son sus capitales, banderas o número de población.
 
 ## Development server
 
